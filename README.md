@@ -1,66 +1,54 @@
-## Foundry
+## DegenToken Contract Overview
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+The contract provides a basic framework for a customizable ERC-20 token with additional features tailored for specific use cases, such as token redemption and burning. Users can interact with the contract to create redemption items, transfer tokens, redeem specific items, and burn their own tokens.
 
-Foundry consists of:
+### Key Functionalities:
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- Token Details:
 
-## Documentation
+Name: DegenToken
+Symbol: DGN
+Inherits from the OpenZeppelin ERC-20 standard contract (ERC20.sol).
+Owner and Minting:
 
-https://book.getfoundry.sh/
+- The contract includes an onlyTokenOwner modifier to restrict certain functions to the owner (tokenOwner).
+The constructor initializes the tokenOwner as the sender of the deployment transaction.
+Minting Function:
 
-## Usage
+- mintTokens: Allows the owner to mint a specified amount of tokens and assign them to a target address.
+Redemption Items:
 
-### Build
+- RedemptionInfo represents information about a redemption item, including owner, name, and amount.
+Maintains a mapping of redemption items using their unique identifiers (redemptionItemId).
 
-```shell
-$ forge build
-```
+- createRedemptionItem: Allows users to create redemption items by providing a name and an amount.
+Token Transfers:
 
-### Test
+- transferTokens: Allows users to transfer tokens to another address, ensuring that the sender has a sufficient balance.
+Balance Inquiry:
 
-```shell
-$ forge test
-```
+- getBalance: Enables users to query their token balance.
+Token Redemption:
 
-### Format
+- redeemToken: Facilitates the redemption of a specified redemption item by transferring the associated tokens to the redeemer and updating the item's owner.
+Token Burning:
 
-```shell
-$ forge fmt
-```
+- burnTokens: Permits users to burn a specified amount of their own tokens, reducing the total supply.
 
-### Gas Snapshots
 
-```shell
-$ forge snapshot
-```
+##### View Functions:
 
-### Anvil
+- viewRedemptionItemOwner: Allows users to view the current owner of a specific redemption item.
+- viewRedemption: Allows users to view detailed information about a redemption item using its unique identifier.
+Modifiers:
 
-```shell
-$ anvil
-```
+- onlyTokenOwner: Ensures that only the owner can execute certain functions.
 
-### Deploy
+### Deployment and Interaction
+ The contract was written using foundry, the test were ran successfully and it was deployed to Avalache Network at the address  0x80D3656C0D8cE1e97CD979727F7f5ce419ceCc9E
+ 
+### Authors
+Esther Breath @metacraftersio
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+### License
+This project is licensed under the MIT License
