@@ -45,7 +45,7 @@ Modifiers:
 - onlyTokenOwner: Ensures that only the owner can execute certain functions.
 
 ### Deployment and Interaction
- The contract was written using foundry, the test were ran successfully and it was deployed to Avalache Network at the address  0x80D3656C0D8cE1e97CD979727F7f5ce419ceCc9E
+ The contract was written using foundry, the test were ran successfully and it was deployed to Avalanche Network at the address  0x80D3656C0D8cE1e97CD979727F7f5ce419ceCc9E
  
 ### Authors
 Esther Breath @metacraftersio
